@@ -1,7 +1,12 @@
 // Idea: Dice Roller
 
 const DOM = {
-    button: 
+	form: document.getElementById('form'),
+	numSidesInput: document.getElementById('numSides'),
+	numRollsInput: document.getElementById('numRolls'),
+	guessNumInput: document.getElementById('guessNum'),
+	guessValueInput: document.getElementById('guessValue'),
+	results: document.getElementById('results'),
 };
 
 function roll(numSides) {
@@ -9,8 +14,14 @@ function roll(numSides) {
 	return randNum;
 }
 
-function main(numSides, numRolls) {
+function rollMult(numSides, numRolls, guessNum, guessValue) {
 	const rolls = {};
+	results.innerHTML = '';
+
+	if (guessNum < 1 || guessNum > numSides) {
+		alert(`Your guess must be a whole number between 1 and ${numSides}`);
+		return;
+	}
 
 	if (
 		numSides > 0 &&
@@ -23,10 +34,39 @@ function main(numSides, numRolls) {
 			rolls[randNum] = (rolls[randNum] || 0) + 1;
 		}
 	} else {
-		throw new Error('Must enter positive integer values');
+		alert('You must enter only whole numbers.');
 	}
 
-	console.log(rolls);
+	Object.keys(rolls).forEach((key) => {
+		console.log('hi');
+		const listEl = document.createElement('li');
+		if (Number(key) === guessNum) {
+			const bold = document.createElement('b');
+			bold.textContent = `${key}: ${rolls[key]} time${
+				rolls[key] > 1 ? 's' : ''
+			}`;
+
+			if (rolls[key] === guessValue) {
+				results.insertAdjacentHTML('beforeend', 'Correct Guess!');
+			}
+
+			listEl.append(bold);
+		} else {
+			listEl.textContent = `${key}: ${rolls[key]} time${
+				rolls[key] > 1 ? 's' : ''
+			}`;
+		}
+
+		results.append(listEl);
+	});
 }
 
-main(6, 10);
+DOM.form.addEventListener('submit', (e) => {
+	e.preventDefault();
+	rollMult(
+		Number(DOM.numSidesInput.value),
+		Number(DOM.numRollsInput.value),
+		Number(DOM.guessNumInput.value),
+		Number(DOM.guessValueInput.value)
+	);
+});

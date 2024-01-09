@@ -8,14 +8,20 @@
 		<link rel="stylesheet" href="style.css" />
 	</head>
 	<body>
-		<form id="inputs">
+		<form id="form">
 			<label for="numSides"># of Sides</label>
 			<input type="text" id="numSides" />
 			<label for="numRolls"># of Rolls</label>
 			<input type="text" id="numRolls" />
-			<button type="submit" id="submit">Roll</button>
+			<label for="guessNum">Guess Number</label>
+			<input type="text" id="guessNum" />
+			<label for="guessValue">Guess Value</label>
+			<input type="text" id="guessValue" />
+			<button type="submit">Roll</button>
 		</form>
-
+		<div>
+			<ul id="results"></ul>
+		</div>
 		<script src="main.js"></script>
 	</body>
 </html>
