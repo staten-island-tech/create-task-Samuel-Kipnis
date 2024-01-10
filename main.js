@@ -7,6 +7,7 @@ const DOM = {
 	guessNumInput: document.getElementById('guessNum'),
 	guessValueInput: document.getElementById('guessValue'),
 	results: document.getElementById('results'),
+	prev: document.getElementById('pre'),
 };
 
 function roll(numSides) {
@@ -16,6 +17,7 @@ function roll(numSides) {
 
 function rollMult(numSides, numRolls, guessNum, guessValue) {
 	const rolls = {};
+	prev.innerHTML += results.innerHTML + '<br>';
 	results.innerHTML = '';
 
 	if (guessNum < 1 || guessNum > numSides) {
@@ -45,12 +47,11 @@ function rollMult(numSides, numRolls, guessNum, guessValue) {
 			bold.textContent = `${key}: ${rolls[key]} time${
 				rolls[key] > 1 ? 's' : ''
 			}`;
+			listEl.append(bold);
 
 			if (rolls[key] === guessValue) {
-				results.insertAdjacentHTML('beforeend', 'Correct Guess!');
+				listEl.innerHTML += '<br> Correct Guess ✅';
 			}
-
-			listEl.append(bold);
 		} else {
 			listEl.textContent = `${key}: ${rolls[key]} time${
 				rolls[key] > 1 ? 's' : ''
@@ -63,6 +64,12 @@ function rollMult(numSides, numRolls, guessNum, guessValue) {
 
 DOM.form.addEventListener('submit', (e) => {
 	e.preventDefault();
+	console.log(
+		Number(DOM.numSidesInput.value),
+		Number(DOM.numRollsInput.value),
+		Number(DOM.guessNumInput.value),
+		Number(DOM.guessValueInput.value)
+	);
 	rollMult(
 		Number(DOM.numSidesInput.value),
 		Number(DOM.numRollsInput.value),
