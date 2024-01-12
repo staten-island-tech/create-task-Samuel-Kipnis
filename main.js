@@ -17,7 +17,7 @@ function roll(numSides) {
 
 function rollMult(numSides, numRolls, guessNum, guessValue) {
 	const rolls = {};
-	prev.innerHTML += results.innerHTML + '<br>';
+	prev.insertAdjacentHTML('afterbegin', results.innerHTML + '<br>');
 	results.innerHTML = '';
 
 	if (guessNum < 1 || guessNum > numSides) {
