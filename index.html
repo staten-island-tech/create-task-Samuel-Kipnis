@@ -9,72 +9,19 @@
 		<script src="https://cdn.tailwindcss.com"></script>
 	</head>
 	<body>
-		<!-- <form id="form">
-			<label for="numSides"># of Sides</label>
-			<input type="text" id="numSides" />
-			<label for="numRolls"># of Rolls</label>
-			<input type="text" id="numRolls" />
-			<label for="guessNum">Guess Number</label>
-			<input type="text" id="guessNum" />
-			<label for="guessValue">Guess Value</label>
-			<input type="text" id="guessValue" />
-			<button type="submit">Roll</button>
-		</form> -->
 		<div class="flex flex-row">
 			<div class="w-1/2 max-w-xs">
-				<form
-					class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
-					id="form">
+				<form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" id="form">
 					<div class="mb-4">
-						<label
-							class="block text-gray-700 text-sm font-bold mb-2"
-							for="numSides">
-							# of Sides
-						</label>
-						<input
-							class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-							id="numSides"
-							type="text" />
+						<label class="block text-gray-700 text-sm font-bold mb-2" for="numSides"> # of Sides </label>
+						<input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="numSides" type="text" />
 					</div>
 					<div class="mb-6">
-						<label
-							class="block text-gray-700 text-sm font-bold mb-2"
-							for="password">
-							# of Rolls
-						</label>
-						<input
-							class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-							id="numRolls"
-							type="text" />
-					</div>
-					<div class="mb-6">
-						<label
-							class="block text-gray-700 text-sm font-bold mb-2"
-							for="guessNum">
-							Guess Number
-						</label>
-						<input
-							class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-							id="guessNum"
-							type="text" />
-					</div>
-					<div class="mb-6">
-						<label
-							class="block text-gray-700 text-sm font-bold mb-2"
-							for="guessNum">
-							Guess Value
-						</label>
-						<input
-							class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-							id="guessValue"
-							type="text" />
+						<label class="block text-gray-700 text-sm font-bold mb-2" for="guessNum"> Guess Number </label>
+						<input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="guessNum" type="text" />
 					</div>
 					<div class="flex items-center justify-between mb-6">
-						<button
-							class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-							type="submit">
-							Submit
-						</button>
+						<button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">Submit</button>
 					</div>
 					<div id="results"></div>
 				</form>

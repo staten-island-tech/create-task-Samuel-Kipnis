@@ -6,3 +6,7 @@
     display: block;
     margin-bottom: 1rem;
 }
+
+.green {
+    color: rgb(0, 184, 0);
+}
