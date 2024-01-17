@@ -10,12 +10,12 @@ const DOM = {
 	prev: document.getElementById('prev'),
 };
 
-function roll(numSides) {
+function rollDie(numSides) {
 	const randNum = Math.floor(Math.random() * numSides) + 1;
 	return randNum;
 }
 
-function isValidRoll(numSides, guessNum) {
+function valuesAreValid(numSides, guessNum) {
 	if (guessNum < 1 || guessNum > numSides) {
 		alert(`Your guess must be a whole number between 1 and ${numSides}`);
 		return false;
@@ -29,18 +29,18 @@ function isValidRoll(numSides, guessNum) {
 	}
 }
 
-function displayData(rolls, guessNum) {
+function displayData(rolls) {
 	DOM.results.innerHTML = '';
 	DOM.prev.innerHTML = '';
 	for (let i in rolls) {
 		if (i == 0) {
-			DOM.results.innerHTML += `<p>You rolled a ${rolls[i]}</p>`;
-			if (rolls[i] == guessNum) {
+			DOM.results.innerHTML += `<p>You rolled a ${rolls[i].value}</p>`;
+			if (rolls[i].correct === true) {
 				DOM.results.innerHTML += `<p class='green'>Correct Guess</p>`;
 			}
 		} else {
-			DOM.prev.innerHTML += `<li>You rolled a ${rolls[i]}</li>`;
-			if (rolls[i] == guessNum) {
+			DOM.prev.innerHTML += `<li>You rolled a ${rolls[i].value}</li>`;
+			if (rolls[i].correct === true) {
 				DOM.prev.innerHTML += `<p class='green'>Correct Guess</p>`;
 			}
 		}
@@ -49,11 +49,18 @@ function displayData(rolls, guessNum) {
 
 DOM.form.addEventListener('submit', (e) => {
 	e.preventDefault();
-	if (isValidRoll(Number(DOM.numSidesInput.value), Number(DOM.guessNumInput.value))) {
-		const randNum = roll(Number(DOM.numSidesInput.value));
-		rolls.unshift(randNum);
+
+	const numSides = Number(DOM.numSidesInput.value);
+	const guessNum = Number(DOM.guessNumInput.value);
+
+	if (valuesAreValid(numSides, guessNum)) {
+		const randNum = rollDie(numSides);
+		rolls.unshift({
+			correct: randNum === guessNum,
+			value: randNum,
+		});
 
 		console.log(rolls);
-		displayData(rolls, Number(DOM.guessNumInput.value));
+		displayData(rolls, guessNum);
 	}
 });
