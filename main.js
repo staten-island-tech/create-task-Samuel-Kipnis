@@ -29,7 +29,19 @@ function valuesAreValid(numSides, guessNum) {
 
 function displayData(rolls) {
 	DOM.results.innerHTML = '';
-	DOM.prev.innerHTML = '';
+
+	let correctRolls = 0;
+	rolls.forEach((roll) => {
+		if (roll.correct) correctRolls++;
+	});
+
+	let numRolls = rolls.length;
+
+	DOM.prev.innerHTML = `% Correct: ${(
+		(correctRolls / numRolls) *
+		100
+	).toFixed(2)}%`;
+
 	for (let i in rolls) {
 		if (i == 0) {
 			DOM.results.innerHTML += `<p>You rolled a ${rolls[i].value}</p>`;
@@ -58,7 +70,6 @@ DOM.form.addEventListener('submit', (e) => {
 			value: randNum,
 		});
 
-		console.log(rolls);
 		displayData(rolls);
 	}
 });
