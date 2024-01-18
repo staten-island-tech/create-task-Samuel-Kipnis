@@ -1,5 +1,3 @@
-// Idea: Dice Roller
-
 const rolls = [];
 
 const DOM = {
@@ -24,7 +22,7 @@ function valuesAreValid(numSides, guessNum) {
 	if (numSides > 0 && Number.isInteger(numSides)) {
 		return true;
 	} else {
-		alert('You must enter only whole numbers.');
+		alert('The number of sides must be a whole number.');
 		return false;
 	}
 }
@@ -61,6 +59,6 @@ DOM.form.addEventListener('submit', (e) => {
 		});
 
 		console.log(rolls);
-		displayData(rolls, guessNum);
+		displayData(rolls);
 	}
 });
